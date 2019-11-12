@@ -121,11 +121,8 @@ $(document).ready(function() {
   const $quizForm = $(".belka-quiz-container");
   const $congratMessage = $(".footer-congratulation");
   const $submitBtn = $("#quiz-submit-btn");
-  const textareaElement = document.querySelector(
-    ".quiz-question-textarea__element"
-  );
+
   const $quizMainLiElement = $(".question-content-ul__li");
-  const $nutActionBlockListUl = $("");
   const $nutActionBlockListLi = $(".question-content-ul__li-action-block").find(
     ".nut-rating__li"
   );
@@ -151,7 +148,6 @@ $(document).ready(function() {
         validateState = false;
       } else {
         $(liElement).removeClass("invalid");
-        validateState = true;
       }
     });
 
@@ -169,7 +165,7 @@ $(document).ready(function() {
         removeValidationClass(currentMainLi);
         disableNutList(currentNutList);
       } else {
-        checkNutRatingList(currentNutList);
+        addInvalidClass(currentMainLi);
       }
     });
   });
@@ -181,7 +177,8 @@ $(document).ready(function() {
       const currentMainLi = $(this).parents(".question-content-ul__li")[0];
       const currentNutCheckbox = $(currentMainLi).find(
         ".difficult-to-answer-label__checkbox"
-      );
+      )[0];
+
       if ($($(currentMainLi).find(".nut-rating__li")[0]).hasClass("checked")) {
         disableCheckbox(currentNutCheckbox);
         removeValidationClass(currentMainLi);
@@ -205,18 +202,13 @@ $(document).ready(function() {
     $(currentContainer).addClass("invalid");
   }
 
-  function checkNutRatingList(currentNutList) {
-    const currentMainLi = $(currentNutList).parents(
-      ".question-content-ul__li"
-    )[0];
-    if (!$(currentNutList).hasClass("checked")) {
-      addInvalidClass(currentMainLi);
-    }
-  }
-
   //
   // Second TextArea quiz validation
   //
+
+  const textareaElement = document.querySelector(
+    ".quiz-question-textarea__element"
+  );
 
   textareaElement.addEventListener("input", e => {
     if (e.currentTarget.value.replace(/\s/g, "")) {
@@ -229,7 +221,6 @@ $(document).ready(function() {
 
     if (textareaElement.value.replace(/\s/g, "")) {
       $(textareaElement).removeClass("invalid");
-      validateState = true;
     } else {
       $(textareaElement).addClass("invalid");
       validateState = false;
@@ -244,6 +235,7 @@ $(document).ready(function() {
 
   const $acornMainRowContainer = $(".quiz-sub-row");
   const $acornRangeSlider = $(".acorn-range-container__slider");
+  const $acornRangeSliderHandle = $(".ui-slider-handle");
   const $acornCheckbox = $(
     ".quiz-sub-row .difficult-to-answer-label__checkbox"
   );
@@ -266,7 +258,6 @@ $(document).ready(function() {
         addInvalidClass(currentRow);
         validateState = false;
       } else {
-        validateState = true;
         removeValidationClass(currentRow);
       }
     });
@@ -286,7 +277,7 @@ $(document).ready(function() {
         removeValidationClass(currentContainer);
         setRangeSliderToInitialValue(currentRangeSlider);
       } else {
-        checkNutRatingList(currentNutList);
+        addInvalidClass(currentContainer);
       }
     });
   });
@@ -295,16 +286,41 @@ $(document).ready(function() {
     $(sliderRangeElement).slider("value", 0);
   }
 
+  $.each($acornRangeSliderHandle, function(index, el) {
+    $(el).click(e => {
+      const currentContainer = $(this).parents(".quiz-sub-row")[0];
+      const currentCheckbox = $(currentContainer).find(
+        ".difficult-to-answer-label__checkbox"
+      )[0];
+
+      if (
+        $($(this).parent(".acorn-range-container__slider")).slider("value") > 0
+      ) {
+        disableCheckbox(currentCheckbox);
+        removeValidationClass(currentContainer);
+      }
+    });
+  });
+
   //
   // Submit and validate all Quiz
   //
+
   $submitBtn.click(function(event) {
     event.preventDefault();
 
+    console.log("----------");
     validateNutRatingQuiz();
     validateTextareaQuiz();
     validateAcornRangeQuiz();
-    // $quizForm.slideUp();
-    // $congratMessage.slideDown();
+    console.log("----------");
+    if (
+      validateNutRatingQuiz() &&
+      validateTextareaQuiz() &&
+      validateAcornRangeQuiz()
+    ) {
+      $quizForm.slideUp();
+      $congratMessage.slideDown();
+    }
   });
 });
