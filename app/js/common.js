@@ -124,18 +124,8 @@ $(document).ready(function() {
   const textareaElement = document.querySelector(
     ".quiz-question-textarea__element"
   );
-  const $quizContainerRow = $(".quiz-question-row-1");
   const $quizMainLiElement = $(".question-content-ul__li");
-
-  $submitBtn.click(function(event) {
-    event.preventDefault();
-
-    validateNutRatingQuiz();
-    validateTextareaQuiz();
-    // $quizForm.slideUp();
-    // $congratMessage.slideDown();
-  });
-
+  const $nutActionBlockListUl = $("");
   const $nutActionBlockListLi = $(".question-content-ul__li-action-block").find(
     ".nut-rating__li"
   );
@@ -143,34 +133,9 @@ $(document).ready(function() {
     ".question-content-ul__li-action-block"
   ).find(".difficult-to-answer-label__checkbox");
 
+  //
   // First Nut quiz validation
-  $.each($nutActionBlockCheckbox, function(index, el) {
-    $(el).click(function(e) {
-      const currentMainLi = $(this).parents(".question-content-ul__li")[0];
-      const currentNutList = $(currentMainLi).find(".nut-rating__li");
-
-      console.log("TCL: currentMainLi", currentMainLi);
-      console.log("TCL: currentNutList", currentNutList);
-
-      if (this.checked) {
-        removeNutValidationClass(currentMainLi);
-        disableNutList(currentNutList);
-      } else {
-        checkNutRatingList(currentNutList);
-      }
-    });
-  });
-
-  function disableNutList(el) {
-    console.log("disableNutList");
-  }
-
-  function removeNutValidationClass(currentMainLi) {
-    $(currentMainLi).removeClass("invalid");
-  }
-  function checkNutRatingList(checkboxElement) {
-    console.log(checkboxElement.checked);
-  }
+  //
 
   function validateNutRatingQuiz() {
     let validateState = true;
@@ -194,15 +159,75 @@ $(document).ready(function() {
     return validateState;
   }
 
+  // nutActionBlockCheckbox
+  $.each($nutActionBlockCheckbox, function(index, el) {
+    $(el).click(function(e) {
+      const currentMainLi = $(this).parents(".question-content-ul__li")[0];
+      const currentNutList = $(currentMainLi).find(".nut-rating__li");
+
+      if (this.checked) {
+        removeValidationClass(currentMainLi);
+        disableNutList(currentNutList);
+      } else {
+        checkNutRatingList(currentNutList);
+      }
+    });
+  });
+
+  // nutActionBlockList
+
+  $.each($nutActionBlockListLi, function(index, el) {
+    $(el).click(function(e) {
+      const currentMainLi = $(this).parents(".question-content-ul__li")[0];
+      const currentNutCheckbox = $(currentMainLi).find(
+        ".difficult-to-answer-label__checkbox"
+      );
+      if ($($(currentMainLi).find(".nut-rating__li")[0]).hasClass("checked")) {
+        disableCheckbox(currentNutCheckbox);
+        removeValidationClass(currentMainLi);
+      }
+    });
+  });
+
+  function disableNutList(currentNutList) {
+    $(currentNutList).removeClass("checked");
+  }
+
+  function disableCheckbox(currentCheckbox) {
+    $(currentCheckbox).prop("checked", false);
+  }
+
+  function removeValidationClass(currentContainer) {
+    $(currentContainer).removeClass("invalid");
+  }
+
+  function addInvalidClass(currentContainer) {
+    $(currentContainer).addClass("invalid");
+  }
+
+  function checkNutRatingList(currentNutList) {
+    const currentMainLi = $(currentNutList).parents(
+      ".question-content-ul__li"
+    )[0];
+    if (!$(currentNutList).hasClass("checked")) {
+      addInvalidClass(currentMainLi);
+    }
+  }
+
+  //
   // Second TextArea quiz validation
-  textareaElement.addEventListener("change", e => {
-    validateTextareaQuiz();
+  //
+
+  textareaElement.addEventListener("input", e => {
+    if (e.currentTarget.value.replace(/\s/g, "")) {
+      validateTextareaQuiz();
+    }
   });
 
   function validateTextareaQuiz() {
     let validateState = true;
 
-    if (textareaElement.value) {
+    if (textareaElement.value.replace(/\s/g, "")) {
       $(textareaElement).removeClass("invalid");
       validateState = true;
     } else {
@@ -212,4 +237,74 @@ $(document).ready(function() {
     console.log("validateTextareaQuiz", validateState);
     return validateState;
   }
+
+  //
+  // Third Acorn range slider quiz validation
+  //
+
+  const $acornMainRowContainer = $(".quiz-sub-row");
+  const $acornRangeSlider = $(".acorn-range-container__slider");
+  const $acornCheckbox = $(
+    ".quiz-sub-row .difficult-to-answer-label__checkbox"
+  );
+
+  function validateAcornRangeQuiz() {
+    let validateState = true;
+
+    $.each($acornMainRowContainer, function(index, currentRow) {
+      const acornRangeSlider = $(currentRow).find(
+        ".acorn-range-container__slider"
+      )[0];
+      const acornOtherVote = $(currentRow).find(
+        ".difficult-to-answer-label__checkbox"
+      )[0];
+
+      if (
+        !($(acornRangeSlider).slider("value") > 0) &&
+        !acornOtherVote.checked
+      ) {
+        addInvalidClass(currentRow);
+        validateState = false;
+      } else {
+        validateState = true;
+        removeValidationClass(currentRow);
+      }
+    });
+
+    console.log("validateAcornRangeQuiz", validateState);
+    return validateState;
+  }
+
+  $.each($acornCheckbox, function(index, el) {
+    $(el).click(function(e) {
+      const currentContainer = $(this).parents(".quiz-sub-row")[0];
+      const currentRangeSlider = $(currentContainer).find(
+        ".acorn-range-container__slider"
+      );
+
+      if (this.checked) {
+        removeValidationClass(currentContainer);
+        setRangeSliderToInitialValue(currentRangeSlider);
+      } else {
+        checkNutRatingList(currentNutList);
+      }
+    });
+  });
+
+  function setRangeSliderToInitialValue(sliderRangeElement) {
+    $(sliderRangeElement).slider("value", 0);
+  }
+
+  //
+  // Submit and validate all Quiz
+  //
+  $submitBtn.click(function(event) {
+    event.preventDefault();
+
+    validateNutRatingQuiz();
+    validateTextareaQuiz();
+    validateAcornRangeQuiz();
+    // $quizForm.slideUp();
+    // $congratMessage.slideDown();
+  });
 });

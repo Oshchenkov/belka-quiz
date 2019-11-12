@@ -247,8 +247,6 @@
   padding-left: 60px
   position: relative
   &__status
-    content: ''
-    display: block
     position: absolute
     left: 25px
     top: 6px
@@ -259,6 +257,9 @@
   &__text
     color: $main-accent-color
     
+.quiz-sub-row.invalid .acorn-quiz-title__status
+  background-color: $warning-color
+
 .acorn-range-container
   width: 100%
   padding: 34px 40px 34px 10px
