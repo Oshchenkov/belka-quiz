@@ -1,0 +1,337 @@
+////  
+////  ROOT
+////  
+
+.belka-quiz-container
+  font-family: "Helvetica-Medium"
+  font-size: 16px
+  margin-top: 60px
+  margin-bottom: 60px
+
+//  
+//  belka-quiz-title
+// 
+
+.belka-quiz-title
+  border-bottom: 2px solid $main-accent-color
+  display: flex
+  max-width: 510px
+  margin-left: auto
+  margin-right: auto
+  justify-content: space-between
+  margin-bottom: 60px
+  &__logo
+    display: flex
+    position: relative
+    margin-right: 80px
+    &-box
+      background-color: $main-accent-color
+      width: 80px
+      height: 100%
+      min-height: 80px
+      position: relative
+      &-number
+        color: $accent-dark-color
+        font-size: 3rem
+        line-height: normal
+        position: absolute
+        bottom: 0
+        left: 20px
+    &-img
+      position: absolute
+      height: auto
+      max-width: 100px
+      bottom: 0
+      right: -70px
+  &__name
+    align-self: flex-end
+    padding: 5px 30px
+    font-size: 1.5rem
+    color: $main-accent-color
+
+
++media-breakpoint-down($sm)
+  .belka-quiz-title__name
+    font-size: 1.5rem
+    line-height: normal
+
+
+
+//  
+//  quiz-question-row 1
+// 
+
+.quiz-question-row
+  margin-bottom: 30px
+  &__col
+
+.quiz-question
+  display: flex
+  align-items: baseline
+  &__count
+    color: $main-accent-color
+    font-size: 1.5rem
+    font-family: "Helvetica-Medium"
+    margin-right: 10px
+  &__content
+
+
+  &__title
+    color: $main-color
+    font-family: "Helvetica-Bold"
+    font-size: 1.1rem
+    margin-bottom: 10px
+  &__sub
+    font-family: "Helvetica-Medium"
+    font-size: 0.875rem
+    color: #86878C
+    margin-bottom: 10px
+  &__content
+
+
+
+.question-content-ul
+  list-style-type: none
+  display: flex
+  flex-direction: column
+  padding-left: 50px
+  &__li
+    position: relative
+    display: flex
+    flex-direction: column
+    margin-bottom: 20px
+    &::before
+      content: ''
+      display: block
+      position: absolute
+      left: -25px
+      top: 6px
+      width: 10px
+      height: 10px
+      border-radius: 50%
+      background-color: $main-color
+    &-title
+      margin-bottom: 20px
+      color: $main-accent-color
+    &-action-block
+      display: flex
+      align-items: center
+
+.question-content-ul__li.invalid::before
+  background-color: $warning-color
+  
+.nut-rating
+  display: flex
+  list-style: none
+  padding-left: 0
+  margin-right: 30px
+  &__li
+    width: 70px
+    height: 50px
+    background-image: url("../images/hazelnut-unchecked.png")
+    background-repeat: no-repeat
+    background-size: contain
+    background-position: center
+    cursor: pointer
+    &:first-child
+      margin-left: 0
+    &:last-child
+      margin-right: 0
+
+.nut-rating__li.checked
+  background-image: url("../images/hazelnut-checked.png")
+.nut-rating__li.hover
+  background-image: url("../images/hazelnut-hovered.png")
+
+.difficult-to-answer-label
+  display: block
+  padding-left: 35px
+  user-select: none
+  color: $light-color
+  font-size: 1.1rem
+  position: relative
+  cursor: pointer
+  background-color: transparent
+  margin-bottom: 0
+  &__checkbox
+    position: absolute
+    opacity: 0
+    cursor: pointer
+    height: 0
+    width: 0
+  &__mark
+    position: absolute
+    top: 2px
+    left: 0
+    height: 22px
+    width: 22px
+    border-radius: 50%
+    border: 2px solid $light-color
+    display: flex
+    align-items: center
+    justify-content: center
+    
+
+.difficult-to-answer-label:hover .difficult-to-answer-label__mark
+  border: 2px solid $primary-color
+.difficult-to-answer-label:hover 
+  color: $primary-color
+
+.difficult-to-answer-label .difficult-to-answer-label__checkbox:checked ~ .difficult-to-answer-label-text 
+  color: $primary-color
+.difficult-to-answer-label .difficult-to-answer-label__checkbox:checked ~ .difficult-to-answer-label__mark
+  border: 2px solid $primary-color
+.difficult-to-answer-label .difficult-to-answer-label__checkbox:checked ~ .difficult-to-answer-label__mark:before
+  content: ''
+  width: 10px
+  height: 10px
+  border-radius: 50%
+  background-color: $primary-color
+
+//  
+//  quiz-question-row 2
+// 
+
+.quiz-question-textarea
+  display: block
+  width: 100%
+  max-width: 900px
+  margin: 20px
+  
+  font-family: "Helvetica-Medium-Italic"
+  position: relative
+  &::before
+    content: ''
+    display: block
+    width: 83px
+    height: 83px
+    position: absolute
+    bottom: 8px
+    right: 34px
+    z-index: 2
+    background-image: url("../images/fox-bg-textarea.png")
+    background-repeat: no-repeat
+    background-size: contain
+.quiz-question-textarea__element
+  border: 2px solid $accent-dark-color
+  border-radius: 10px
+  padding: 10px 120px 10px 20px 
+  width: 100%
+  height: 100%
+  &::placeholder
+    color: $light-color
+  &:focus,
+  &:active,
+  &:hover
+    outline: none
+  
+.quiz-question-textarea__element.invalid
+  border: 2px solid $warning-color
+
+  
+//  
+//  quiz-question-row 3
+// 
+
+.quiz-sub-row
+  margin-bottom: 40px
+  &__col
+    display: flex
+    align-items: center
+
+.quiz-question-row-3 .quiz-question__title
+  margin-bottom: 30px
+
+
+.acorn-quiz-title
+  padding-left: 60px
+  position: relative
+  &__status
+    content: ''
+    display: block
+    position: absolute
+    left: 25px
+    top: 6px
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background-color: #4D8C4A
+  &__text
+    color: $main-accent-color
+    
+.acorn-range-container
+  width: 100%
+  padding: 34px 40px 34px 10px
+  &__slider
+    width: 100%
+
+.ui-slider-horizontal
+  height: 3px
+  background-color: $light-color
+.ui-widget.ui-widget-content
+  border: none
+.ui-slider .ui-slider-range
+  background-color: $primary-color
+.ui-slider .ui-slider-handle
+  cursor: pointer
+  width: 55px
+  height: 65px
+  top: -30px
+  background-color: transparent
+  border: none
+  background-image: url(../images/cron-checkbox.png)
+  background-repeat: no-repeat
+  background-size: contain
+  position: 
+.acorn-range-container__slider-value
+  content: '0'
+  display: block
+  position: absolute
+  bottom: 3px
+  font-family: "Helvetica-Bold"
+  color: #fff
+  font-size: 1.2rem
+  left: 23px
+.ui-slider .ui-slider-handle.ui-state-focus
+  outline: none
+
+
+.quiz-question-last-row
+  margin-bottom: 60px
+
+//  
+//  quiz-submit-btn
+// 
+
+.quiz-submit-btn
+  background-color: $main-accent-color
+  border: 1px solid $main-accent-color
+  outline: none
+  border-radius: 8px
+  color: #fff
+  text-transform: uppercase
+  padding: 4px 10px
+  &:active,
+  &:focus,
+  &:hover
+    outline: none
+
+
+//  
+//  footer-congratulation
+// 
+
+.footer-congratulation
+  // display: none
+  max-width: 500px
+  margin-left: auto
+  margin-right: auto
+  margin-bottom: 120px
+  margin-top: 120px
+  &__icon
+    max-width: 270px
+    margin-left: auto
+    margin-right: auto
+  &__text
+    font-size: 1.5rem
+    font-family: "Helvetica-Bold"

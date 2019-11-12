@@ -5,28 +5,420 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Optimized SASS template</title>
+  <title>Belka quiz</title>
   <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./libs/jquery-ui-1.12.1/jquery-ui.min.css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
   <div class="container">
-    Your code
+    <form class="belka-quiz-container">
+      <div class="belka-quiz-title">
+        <div class="belka-quiz-title__logo">
+          <div class="belka-quiz-title__logo-box">
+            <div class="belka-quiz-title__logo-box-number">
+              1
+            </div>
+          </div>
+          <picture>
+            <source srcset="./images/title-fox.webp" type="image/webp" class="belka-quiz-title__logo-img">
+            <source srcset="./images/title-fox.png" type="image/png" class="belka-quiz-title__logo-img">
+            <img src="./images/title-fox.png" alt="belka logo" class="belka-quiz-title__logo-img">
+          </picture>
+
+        </div>
+        <div class="belka-quiz-title__name">
+          Компания Белка Россия
+        </div>
+      </div>
+      <div class="row quiz-question-row quiz-question-row-1">
+        <div class="col quiz-question-row__col">
+          <div class="quiz-question">
+            <div class="quiz-question__count">
+              1
+            </div>
+            <div class="quiz-question__content">
+              <div class="quiz-question__title">
+                Пожалуйста, оцените качество работы компании Белка Россия
+                в целом.
+              </div>
+              <div class="quiz-question__sub">
+                5 - отлично, 4 - очень хорошо, 3 - хорошо, 2 - требуются улучшения, 1 - плохо)
+              </div>
+              <div class="quiz-question__content ">
+                <ul class="question-content-ul">
+                  <li class="question-content-ul__li">
+                    <div class="question-content-ul__li-title">
+                      Умение сотрудников компании Белка Россия решать проблемы
+                    </div>
+                    <div class="question-content-ul__li-action-block">
+                      <ul class="nut-rating">
+                        <li class="nut-rating__li " title='Terribly' data-value='1'></li>
+                        <li class="nut-rating__li " title='Poor' data-value='2'></li>
+                        <li class="nut-rating__li " title='Fair' data-value='3'></li>
+                        <li class="nut-rating__li " title='Good' data-value='4'></li>
+                        <li class="nut-rating__li " title='Excellent' data-value='5'></li>
+                      </ul>
+                      <label for="checkbox-1-1" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-1-1" checked class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="question-content-ul__li">
+                    <div class="question-content-ul__li-title">
+                      Насколько рекомендации по сопровождению Вашего бизнеса,
+                      которые Вы получаете от компании Белка Россия, помогают Вам в работе
+                    </div>
+                    <div class="question-content-ul__li-action-block">
+                      <ul class="nut-rating">
+                        <li class="nut-rating__li checked" title='Terribly' data-value='1'></li>
+                        <li class="nut-rating__li checked" title='Poor' data-value='2'></li>
+                        <li class="nut-rating__li checked" title='Fair' data-value='3'></li>
+                        <li class="nut-rating__li " title='Good' data-value='4'></li>
+                        <li class="nut-rating__li " title='Excellent' data-value='5'></li>
+                      </ul>
+                      <label for="checkbox-1-2" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-1-2" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="question-content-ul__li">
+                    <div class="question-content-ul__li-title">
+                      Насколько хорошо сотрудники компании Белка Россия знают и
+                      понимают рынок и индустрию ресторанов быстрого обслуживания в России
+                    </div>
+                    <div class="question-content-ul__li-action-block">
+                      <ul class="nut-rating">
+                        <li class="nut-rating__li " title='Terribly' data-value='1'></li>
+                        <li class="nut-rating__li " title='Poor' data-value='2'></li>
+                        <li class="nut-rating__li " title='Fair' data-value='3'></li>
+                        <li class="nut-rating__li " title='Good' data-value='4'></li>
+                        <li class="nut-rating__li " title='Excellent' data-value='5'></li>
+                      </ul>
+                      <label for="checkbox-1-3" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-1-3" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="question-content-ul__li">
+                    <div class="question-content-ul__li-title">
+                      Насколько хорошо Вы понимаете, к кому из сотрудников компании
+                      Белка Россия Вам лучше обратиться по тому или иному вопросу
+                    </div>
+                    <div class="question-content-ul__li-action-block">
+                      <ul class="nut-rating">
+                        <li class="nut-rating__li " title='Terribly' data-value='1'></li>
+                        <li class="nut-rating__li " title='Poor' data-value='2'></li>
+                        <li class="nut-rating__li " title='Fair' data-value='3'></li>
+                        <li class="nut-rating__li " title='Good' data-value='4'></li>
+                        <li class="nut-rating__li " title='Excellent' data-value='5'></li>
+                      </ul>
+                      <label for="checkbox-1-4" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-1-4" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row quiz-question-row quiz-question-row-2">
+        <div class="col quiz-question-row__col">
+          <div class="quiz-question">
+            <div class="quiz-question__count">
+              2
+            </div>
+            <div class="quiz-question__content">
+              <div class="quiz-question__title">
+                Если бы Вам предложили улучшить только одно из
+                направлений
+                деятельности
+                компании Белка Россия, что бы Вы выбрали?
+              </div>
+              <div class="quiz-question__content">
+                <div class="quiz-question-textarea">
+                  <textarea class="quiz-question-textarea__element" id="" cols="30" rows="3"
+                    placeholder="При желании, Вы можете оставить комментарий здесь" required></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row quiz-question-row quiz-question-row-3 quiz-question-last-row">
+        <div class="col quiz-question-row__col">
+          <div class="quiz-question">
+            <div class="quiz-question">
+              <div class="quiz-question__count">
+                3
+              </div>
+              <div class="quiz-question__content">
+                <div class="quiz-question__title">
+                  Пожалуйста, оцените уровень знаний, рекомендаций,
+                  которые Вы получаете от Департамента поддержки по каждому перечисленному направлению:
+                </div>
+                <div class="quiz-question__content">
+                  <div class="row quiz-sub-row quiz-sub-row-3-1">
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-quiz-title">
+                        <div class="acorn-quiz-title__status"></div>
+                        <div class="acorn-quiz-title__text">
+                          Выпечка хлеба
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-range-container">
+                        <div id="quiz-sub-range-3-1" class="acorn-range-container__slider"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <label for="checkbox-3-1" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-3-1" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row quiz-sub-row quiz-sub-row-3-2">
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-quiz-title">
+                        <div class="acorn-quiz-title__status"></div>
+                        <div class="acorn-quiz-title__text">
+                          Приготовление продуктов,
+                          безопасность продовольствия
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-range-container">
+                        <div id="quiz-sub-range-3-2" class="acorn-range-container__slider"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <label for="checkbox-3-2" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-3-2" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row quiz-sub-row quiz-sub-row-3-3">
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-quiz-title">
+                        <div class="acorn-quiz-title__status"></div>
+                        <div class="acorn-quiz-title__text">
+                          Работа с документами
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-range-container">
+                        <div id="quiz-sub-range-3-3" class="acorn-range-container__slider"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <label for="checkbox-3-3" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-3-3" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row quiz-sub-row quiz-sub-row-3-4">
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-quiz-title">
+                        <div class="acorn-quiz-title__status"></div>
+                        <div class="acorn-quiz-title__text">
+                          Найм сотрудников
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-range-container">
+                        <div id="quiz-sub-range-3-4" class="acorn-range-container__slider"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <label for="checkbox-3-4" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-3-4" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row quiz-sub-row quiz-sub-row-3-5">
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-quiz-title">
+                        <div class="acorn-quiz-title__status"></div>
+                        <div class="acorn-quiz-title__text">
+                          Обслуживание покупателей
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-range-container">
+                        <div id="quiz-sub-range-3-5" class="acorn-range-container__slider"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <label for="checkbox-3-5" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-3-5" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row quiz-sub-row quiz-sub-row-3-6">
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-quiz-title">
+                        <div class="acorn-quiz-title__status"></div>
+                        <div class="acorn-quiz-title__text">
+                          Мотивация/ удержание сотрудников
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-range-container">
+                        <div id="quiz-sub-range-3-6" class="acorn-range-container__slider"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <label for="checkbox-3-6" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-3-6" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row quiz-sub-row quiz-sub-row-3-7">
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-quiz-title">
+                        <div class="acorn-quiz-title__status"></div>
+                        <div class="acorn-quiz-title__text">
+                          Обучение сотрудников
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-range-container">
+                        <div id="quiz-sub-range-3-7" class="acorn-range-container__slider"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <label for="checkbox-3-7" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-3-7" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="row quiz-sub-row quiz-sub-row-3-8">
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-quiz-title">
+                        <div class="acorn-quiz-title__status"></div>
+                        <div class="acorn-quiz-title__text">
+                          Анализ доходности ресторана
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <div class="acorn-range-container">
+                        <div id="quiz-sub-range-3-8" class="acorn-range-container__slider"></div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 quiz-sub-row__col">
+                      <label for="checkbox-3-8" class="difficult-to-answer-label">
+                        <input type="checkbox" id="checkbox-3-8" class="difficult-to-answer-label__checkbox">
+                        <span class="difficult-to-answer-label__mark"></span>
+                        <span class="difficult-to-answer-label-text">
+                          Затрудняюсь ответить
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center mb-5">
+        <div class="col">
+          <input type="submit" value="Готово" class="quiz-submit-btn" id="quiz-submit-btn">
+        </div>
+      </div>
+
+    </form>
+    <div class="footer-congratulation text-center ">
+      <div class="footer-congratulation__icon mb-5">
+        <picture>
+          <source srcset="./images/fox-bg.webp" type="image/webp" class="footer-congratulation__icon-img">
+          <source srcset="./images/fox-bg.png" type="image/png" class="footer-congratulation__icon-img">
+          <img src="./images/fox-bg.png" alt="success image" class="footer-congratulation__icon-img">
+        </picture>
+      </div>
+      <div class="footer-congratulation__text ">
+        СПАСИБО, ЧТО ДЕЛАЕТЕ НАС ЛУЧШЕ!
+        Белка РОССИЯ
+      </div>
+    </div>
   </div><!-- /.container -->
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="./js/scripts.min.js"></script>
+  <script src="./libs/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <script src="./js/common.js"></script>
 </body>
 
 </html>

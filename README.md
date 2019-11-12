@@ -1,8 +1,12 @@
-# OptimizedSassTemplate
+# Belka quiz static demo
 
-Optimized SASS template with gulp. Ready for gitHub /doc demo show.
+[Demo page](https://oshchenkov.github.io/belka-quiz/)
 
-## For installing you need:
+## Used - OptimizedSassTemplate + webP format for images
+
+[Optimized SASS template](https://github.com/Oshchenkov/OptimizedSassTemplate) with gulp. Ready for gitHub /doc demo show.
+
+### For installing you need:
 
 Run in terminal(need to have installed npm)
 
