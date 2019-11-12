@@ -1,4 +1,4 @@
-# Belka quiz static demo
+# Belka quiz static demo with custom select and range slider + quiz validation
 
 [Demo page](https://oshchenkov.github.io/belka-quiz/)
 
